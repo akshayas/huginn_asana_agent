@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "huginn_asana_agent"
   spec.version       = HuginnAsanaAgent::VERSION
   spec.authors       = ["Akshaya Srivatsa"]
-  spec.email         = ["aks@bolt.com"]
+  spec.email         = ["akshay.s86@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Collection of agents to perform actions on Asana}
+  spec.description   = %q{Collection of agents to perform actions on Asana}
+  spec.homepage      = "https://github.com/akshayas/huginn_asana_agent"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "huginn_agent", "~> 0.6.1"
+  spec.add_development_dependency "asana", "~> 0.8.1"
 end
