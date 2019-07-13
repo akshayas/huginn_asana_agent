@@ -1,5 +1,5 @@
-require "huginn_asana_agent/version"
+require 'asana'
 
 module HuginnAsanaAgent
-  # Your code goes here...
+  HuginnAgent.register 'huginn_asana_agent/asana_query_agent'
 end
