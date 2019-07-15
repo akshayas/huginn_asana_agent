@@ -2,7 +2,7 @@ require "json"
 require_relative "huginn_asana"
 
 module Agents
-  class AsanaQueryAgent < Agent
+  class AsanaTaskQueryAgent < Agent
     include FormConfigurable
     using HuginnAsana
 
@@ -14,8 +14,7 @@ module Agents
 
     description do
       <<-MD
-        The Asana Query Agent allows to query all tasks in a given project. This can be potentially expanded to sections and tags
-        but as of right now, its only supported for project
+        The Asana Task Query Agent allows to query all tasks in a given project or section or tag.
 
         To authenticate you need to set `access_token`. You can find it within Asana
         webapp from "My Profile Settings" > Apps > Manage developer apps > Personal access token.
@@ -34,12 +33,15 @@ module Agents
       {
         "access_token" => "",
         "id" => "",
+        "field" => "",
+        "type" => "project"
       }
     end
 
     form_configurable :access_token
     form_configurable :id
     form_configurable :fields
+    form_configurable :type, type: :array, values: ["project", "section", "tag"]
 
     def working?
       !recent_error_logs?
@@ -59,15 +61,29 @@ module Agents
       end
     end
 
+    def generate_events(result)
+      result.each do |item|
+        create_event(payload: item.to_json(fields))
+      end
+    end
+
     def check
       asanaClient = Asana::Client.new do |c|
         c.authentication :oauth2, bearer_token: interpolated["access_token"]
       end
 
       fields = interpolated["fields"].split(",").map(&:strip)
-      result = asanaClient.tasks.find_by_project(projectId: interpolated["id"], options: { fields: fields })
-      result.each do |item|
-        create_event(payload: item.to_json(fields))
+
+      case options["type"]
+      when "project"
+        result = asanaClient.tasks.find_by_project(projectId: interpolated["id"], options: { fields: fields })
+        generate_events(result)
+      when "section"
+        result = asanaClient.tasks.find_by_section(section: interpolated["id"], options: { fields: fields })
+        generate_events(result)
+      when "tag"
+        result = asanaClient.tasks.find_by_tag(tag: interpolated["id"], options: { fields: fields })
+        generate_events(result)
       end
     end
   end
