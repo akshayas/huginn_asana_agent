@@ -1,11 +1,10 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "huginn_asana_agent/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "huginn_asana_agent"
-  spec.version       = HuginnAsanaAgent::VERSION
+  spec.version       = "0.1.3"
   spec.authors       = ["Akshaya Srivatsa"]
   spec.email         = ["akshay.s86@gmail.com"]
 
@@ -34,7 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "huginn_agent", "~> 0.6.1"
-  spec.add_development_dependency "asana", "~> 0.8.1"
+
+  spec.add_runtime_dependency "huginn_agent", "~> 0.4.0"
+  spec.add_runtime_dependency "asana", "~> 0.8.1"
 end
