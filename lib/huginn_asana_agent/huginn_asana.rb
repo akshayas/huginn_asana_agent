@@ -1,4 +1,4 @@
-require 'asana'
+require "asana"
 
 module HuginnAsana
   refine Asana::Resources::Task do
