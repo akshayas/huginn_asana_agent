@@ -6,7 +6,7 @@ module Agents
     include FormConfigurable
     using HuginnAsana
 
-    SUPPORTED_FIELDS=[:id, :assignee, :assignee_status, :created_at, :completed, :custom_fields, :due_at, :due_on]
+    SUPPORTED_FIELDS=[:id, :name, :assignee, :assignee_status, :created_at, :completed, :custom_fields, :due_at, :due_on, :resource_type, :resource_subtype]
 
     cannot_receive_events!
 
@@ -61,7 +61,7 @@ module Agents
       end
     end
 
-    def generate_events(result)
+    def generate_events(result, fields)
       result.each do |item|
         create_event(payload: item.to_json(fields))
       end
@@ -77,13 +77,13 @@ module Agents
       case options["type"]
       when "project"
         result = asanaClient.tasks.find_by_project(projectId: interpolated["id"], options: { fields: fields })
-        generate_events(result)
+        generate_events(result, fields)
       when "section"
         result = asanaClient.tasks.find_by_section(section: interpolated["id"], options: { fields: fields })
-        generate_events(result)
+        generate_events(result, fields)
       when "tag"
         result = asanaClient.tasks.find_by_tag(tag: interpolated["id"], options: { fields: fields })
-        generate_events(result)
+        generate_events(result, fields)
       end
     end
   end
