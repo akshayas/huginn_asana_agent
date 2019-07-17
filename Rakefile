@@ -1,3 +1,5 @@
-require "bundler/gem_tasks"
+#!/usr/bin/env rake
 
- task :default => :spec
+require "huginn_agent"
+
+HuginnAgent.load_tasks(branch: "master", remote: "https://github.com/cantino/huginn.git")
