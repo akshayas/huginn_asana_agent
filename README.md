@@ -11,11 +11,17 @@ Add this string to your Huginn's .env ADDITIONAL_GEMS configuration:
     huginn_asana_agent
 And then execute:
 
-    $ bundle
+    bundle
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests.
+Run `bundle` to install all dependencies
+
+### .env configuration
+Create a .env file at the root of the repository using the [example](https://github.com/huginn/huginn/blob/master/.env.example) config from huginn. Make sure to add any missing dependencies in ADDITIONAL_GEMS.
+
+### Testing
+Then, run `rake spec` to run the tests. This will download a copy of huginn into `spec/` directory and run your test against Huginn dependencies. If download and setup of Huginn fails, you will have to reconfigure your `.env` file, delete `spec/huginn` before running `rake spec`
 
 ## Contributing
 
