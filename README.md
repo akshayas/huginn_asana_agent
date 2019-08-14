@@ -1,6 +1,6 @@
 # HuginnAsanaAgent
 
-[![Build Status](https://travis-ci.com/akshayas/huginn_asana_agent.svg?token=CHtFMrvvbzYwu91xZnbc&branch=master)](https://travis-ci.com/akshayas/huginn_asana_agent)
+[![Build Status](https://travis-ci.com/akshayas/huginn_asana_agent.svg?token=CHtFMrvvbzYwu91xZnbc&branch=master)](https://travis-ci.com/akshayas/huginn_asana_agent) [![Gem Version](https://badge.fury.io/rb/huginn_asana_agent.svg)](https://badge.fury.io/rb/huginn_asana_agent)
 
 This is Huginn Asana Agent. This repository is a collection of agents to do operations on Asans using Huginn.
 
