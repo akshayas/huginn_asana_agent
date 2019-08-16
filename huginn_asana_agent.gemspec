@@ -3,15 +3,16 @@ lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "huginn_asana_agent"
-  spec.version       = "0.1.5"
-  spec.authors       = ["Akshaya Srivatsa"]
-  spec.email         = ["akshay.s86@gmail.com"]
+  spec.name                 = "huginn_asana_agent"
+  spec.version              = "0.1.5"
+  spec.authors              = ["Akshaya Srivatsa"]
+  spec.email                = ["akshay.s86@gmail.com"]
+  spec.required_ruby_version = ">= 2.3.0"
 
-  spec.summary       = %q{Collection of agents to perform actions on Asana}
-  spec.description   = %q{Collection of agents to perform actions on Asana}
-  spec.homepage      = "https://github.com/akshayas/huginn_asana_agent"
-  spec.license       = "MIT"
+  spec.summary              = %q{Collection of agents to perform actions on Asana}
+  spec.description          = %q{Collection of agents to perform actions on Asana}
+  spec.homepage             = "https://github.com/akshayas/huginn_asana_agent"
+  spec.license              = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -31,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "bundler", ">= 1.17.3"
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_runtime_dependency "huginn_agent", "~> 0.4.0"

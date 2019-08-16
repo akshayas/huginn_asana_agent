@@ -3,3 +3,4 @@ spec/huginn
 .env
 Gemfile.lock
 *.gem
+.ruby-version
